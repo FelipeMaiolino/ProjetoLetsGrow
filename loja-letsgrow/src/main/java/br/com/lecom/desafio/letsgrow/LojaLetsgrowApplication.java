@@ -1,4 +1,4 @@
-package br.com.lecom.desafio.letsgrow.loja;
+package br.com.lecom.desafio.letsgrow;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
