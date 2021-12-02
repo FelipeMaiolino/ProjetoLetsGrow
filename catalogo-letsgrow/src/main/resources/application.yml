@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/letsgrow_catalogo
+    driverClassName: org.mariadb.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      show-sql: false
+server:
+  port: 8081
