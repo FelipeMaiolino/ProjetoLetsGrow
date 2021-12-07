@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import br.com.lecom.desafio.letsgrow.loja.modelo.Estado;
 import br.com.lecom.desafio.letsgrow.loja.modelo.Vendas;
 
 public class VendasDTO {
@@ -13,6 +14,7 @@ public class VendasDTO {
 	private Long idItem;
 	private int qtd;
 	private String enderecoEntrega;
+	private Estado estado;
 	private String nomeProduto;
 	private BigDecimal valorUnitario;
 	private String categoria;
@@ -22,6 +24,7 @@ public class VendasDTO {
 		this.idItem = vendas.getIdItem();
 		this.qtd = vendas.getQtd();
 		this.enderecoEntrega = vendas.getEnderecoEntrega();
+		this.categoria = vendas.getCategoria();
 		this.nomeProduto = vendas.getNomeProduto();
 		this.valorUnitario = vendas.getValorUnitario();
 		this.categoria = vendas.getCategoria();
@@ -58,6 +61,10 @@ public class VendasDTO {
 
 	public static List<VendasDTO> converter(List<Vendas> vendas) {
 		return vendas.stream().map(VendasDTO::new).collect(Collectors.toList());
+	}
+
+	public Estado getEstado() {
+		return estado;
 	}
 
 }

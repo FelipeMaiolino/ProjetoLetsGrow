@@ -1,5 +1,7 @@
 package br.com.lecom.desafio.letsgrow.catalogo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,11 @@ public class CatalogoService {
 
 	public CatalogoItem getItemPorIdItem(Long idItem) {
 		return catalogoRepository.findByIdItem(idItem);
+		
+	}
+	
+	public List<CatalogoItem> getAll() {
+		return catalogoRepository.findAll();
 		
 	}
 
