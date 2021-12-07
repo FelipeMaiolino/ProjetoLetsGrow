@@ -6,12 +6,18 @@
 	<body>
 		<div>
 			<a href="/home"><button type="button" class="btn btn-secondary">retornar</button></a>
+			<a href="/vendas"><button type="button" class="btn btn-primary">Todas as Vendas</button></a>
+			<a href="/vendas/andamento"><button type="button" class="btn btn-primary">Vendas em Andamento</button></a>
+		    <a href="/vendas/entregue"><button type="button" class="btn btn-primary">Vendas em Entregadas</button></a>
 		</div>
 		<div class="container-sm" th:each="venda : ${vendas}">
 			<div class="card" style="width: 18rem;">
-				<h3 class="card-header">ID da Venda: <span th:text="${venda.idVenda}"></span></h3>
+				<th:block th:switch="${venda.estado.name()}">
+				<h3 th:case="ENTREGUE" class="card-header alert-success">ID da Venda: <span th:text="${venda.idVenda}"></span></h3>
+				<h3 th:case="ANDAMENTO" class="card-header alert-warning">ID da Venda: <span th:text="${venda.idVenda}"></span></h3>
 				<h5 class="card-subtitle mb-2">Nome do Produto: <span th:text="${venda.nomeProduto}"></span></h5>
 				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Estatus: <span th:text="${venda.estado}"></span></li>
 					<li class="list-group-item">Categoria: <span th:text="${venda.categoria}"></span></li>
 					<li class="list-group-item">ID do Item: <span th:text="${venda.idItem}"></span></li>
 					<li class="list-group-item">Quantidade de Itens: <span th:text="${venda.qtd}"></span></li>

@@ -2,11 +2,12 @@ package br.com.lecom.desafio.letsgrow.loja.DTO;
 
 import java.math.BigDecimal;
 
-public class infoCatalogoDTO {
+public class ItemDTO {
 
 	private String nomeProduto;
 	private BigDecimal valorUnitario;
 	private String categoria;
+	
 
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
