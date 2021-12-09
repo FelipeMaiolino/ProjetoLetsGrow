@@ -17,11 +17,11 @@ public class HomeController {
 	private CatalogoService catalogoService;
 	
 	@GetMapping("/home")
-	public void listaItems() {
+	public void listaItems(Model model) {
 		
 		 List<ItemDTO> itens = catalogoService.rebebeAllItens();
 		 
-		 System.out.println(itens);
+		 model.addAttribute("itens", itens);
 
 	}
 

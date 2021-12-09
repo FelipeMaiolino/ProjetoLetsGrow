@@ -28,7 +28,6 @@ public class CatalogoService {
 		venda.setValorUnitario(exchange.getBody().getValorUnitario());
 		venda.setCategoria(exchange.getBody().getCategoria());
 
-		System.out.println(exchange.getBody());
 	}
 	
 	public void recebeItemPorEstado(Vendas venda) {

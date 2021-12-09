@@ -4,10 +4,19 @@ import java.math.BigDecimal;
 
 public class ItemDTO {
 
+	private Long idItem;
 	private String nomeProduto;
 	private BigDecimal valorUnitario;
 	private String categoria;
 	
+
+	public Long getIdItem() {
+		return idItem;
+	}
+
+	public void setIdItem(Long idItem) {
+		this.idItem = idItem;
+	}
 
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
