@@ -16,7 +16,7 @@ import br.com.lecom.desafio.letsgrow.loja.service.TranportadoraService;
 
 @Controller
 @RequestMapping("/vendas")
-public class VendasController {
+public class ListaVendasController {
 	
 	@Autowired
 	private VendasRepository vendasRepository;

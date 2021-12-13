@@ -16,4 +16,9 @@ public class PedidoService {
 		return pedidoRepository.findByIdVenda(idVenda);
 	}
 
+	public void novoPedido(Pedido pedido) {
+		pedidoRepository.save(pedido);
+		
+	}
+
 }
