@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.lecom.desafio.letsgrow.loja.DTO.InfoTransporteDTO;
+import br.com.lecom.desafio.letsgrow.loja.DTO.NovaEntregaDTO;
 import br.com.lecom.desafio.letsgrow.loja.modelo.Vendas;
 
 @Service
@@ -26,5 +27,16 @@ public class TranportadoraService {
 		
 		
 	}
+
+	public void mandandoDadosTransporte(NovaEntregaDTO novaEntrega) {
+		RestTemplate client = new RestTemplate();
+		
+		ResponseEntity<NovaEntregaDTO> exchange = client.exchange("http://localhost:8082/trasnportadora/pedido/novo", 
+				HttpMethod.POST, 
+				null, 
+				NovaEntregaDTO.class);
+	}
+	
+	
 
 }
