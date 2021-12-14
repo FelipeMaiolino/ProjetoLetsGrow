@@ -7,23 +7,24 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.lecom.desafio.letsgrow.loja.DTO.InfoTransporteDTO;
 import br.com.lecom.desafio.letsgrow.loja.DTO.NovaEntregaDTO;
+import br.com.lecom.desafio.letsgrow.loja.DTO.VendasDTO;
 import br.com.lecom.desafio.letsgrow.loja.modelo.Vendas;
 
 @Service
 public class TranportadoraService {
 
-	public void recebeDadosTranporte(Vendas venda) {
+	public void recebeDadosTranporte(VendasDTO vendaDTO) {
 		RestTemplate client = new RestTemplate();
 		
 		ResponseEntity<InfoTransporteDTO> exchange = client.exchange(
-				"http://localhost:8082/trasnportadora/pedido/" + venda.getIdVenda(), 
+				"http://localhost:8082/trasnportadora/pedido/" + vendaDTO.getIdVenda(), 
 				HttpMethod.GET, 
 				null, 
 				InfoTransporteDTO.class);
 		
-		venda.setIdTransporte(exchange.getBody().getIdTransporte());
-		venda.setEstado(exchange.getBody().getEstado());
-		venda.setEndereçoEntrega(exchange.getBody().getEndereçoEntrega());
+		vendaDTO.setIdTransporte(exchange.getBody().getIdTransporte());
+		vendaDTO.setEstado(exchange.getBody().getEstado());
+		vendaDTO.setEnderecoEntrega(exchange.getBody().getEndereçoEntrega());
 		
 		
 	}

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.lecom.desafio.letsgrow.loja.DTO.NovaEntregaDTO;
 import br.com.lecom.desafio.letsgrow.loja.DTO.RequisicaoNovaVenda;
+import br.com.lecom.desafio.letsgrow.loja.DTO.VendasDTO;
 import br.com.lecom.desafio.letsgrow.loja.modelo.Vendas;
 import br.com.lecom.desafio.letsgrow.loja.repository.VendasRepository;
 import br.com.lecom.desafio.letsgrow.loja.service.TranportadoraService;
@@ -30,13 +31,12 @@ public class NovaVendaController {
 	public String novo(RequisicaoNovaVenda requisicao) {
 		
 		Vendas venda = requisicao.toVendas();
-		vendasRepository.save(venda);
+		//vendasRepository.save(venda);
 		
 		NovaEntregaDTO novaEntrega = requisicao.toEntrega();
 		novaEntrega.setIdVenda(venda.getIdVenda());
 		
 		trasnportadorService.mandandoDadosTransporte(novaEntrega);
-		
 		
 		return "/novaVenda";
 		

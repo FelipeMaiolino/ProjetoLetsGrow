@@ -24,6 +24,7 @@ public class PedidoController {
 	
 	@PostMapping("/novo")
 	public void postNovoPedido(@RequestBody Pedido pedido) {
+		System.out.println(pedido.getIdTransporte());
 		pedidoService.novoPedido(pedido);
 	}
 	

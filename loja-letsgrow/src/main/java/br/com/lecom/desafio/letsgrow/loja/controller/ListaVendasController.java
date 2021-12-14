@@ -13,6 +13,7 @@ import br.com.lecom.desafio.letsgrow.loja.modelo.Vendas;
 import br.com.lecom.desafio.letsgrow.loja.repository.VendasRepository;
 import br.com.lecom.desafio.letsgrow.loja.service.CatalogoService;
 import br.com.lecom.desafio.letsgrow.loja.service.TranportadoraService;
+import br.com.lecom.desafio.letsgrow.loja.util.ObjectMapperUtils;
 
 @Controller
 @RequestMapping("/vendas")
@@ -30,13 +31,17 @@ public class ListaVendasController {
 	public void ListaVendas(Model model) {
 		
 		List<Vendas> vendas = vendasRepository.findAll();
-		for (Vendas venda : vendas) {
-			catalogoService.recebeItem(venda);
-			trasnportadorService.recebeDadosTranporte(venda);
+	
+		List<VendasDTO> vendas1 = ObjectMapperUtils.mapAll(vendas, VendasDTO.class);
+	
+		for (VendasDTO vendasDTO : vendas1) {
+			
+			catalogoService.recebeItem(vendasDTO);
+			trasnportadorService.recebeDadosTranporte(vendasDTO);
 		}
-		VendasDTO.converter(vendas);
 		
-		model.addAttribute("vendas", vendas);
+		
+		model.addAttribute("vendas", vendas1);
 		
 	}
 	
