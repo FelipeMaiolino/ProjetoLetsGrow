@@ -26,6 +26,7 @@ public class RequisicaoNovaVenda {
 	public void setEnderecoEntrega(String enderecoEntrega) {
 		this.enderecoEntrega = enderecoEntrega;
 	}
+	
 	public Vendas toVendas() {
 		Vendas venda = new Vendas();
 		venda.setIdItem(idItem);

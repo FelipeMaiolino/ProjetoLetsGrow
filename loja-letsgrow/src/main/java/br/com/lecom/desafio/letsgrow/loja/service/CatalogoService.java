@@ -9,40 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.lecom.desafio.letsgrow.loja.DTO.ItemDTO;
+import br.com.lecom.desafio.letsgrow.loja.DTO.VendasDTO;
 import br.com.lecom.desafio.letsgrow.loja.modelo.Vendas;
 
 @Service
 public class CatalogoService {
 
-	public void recebeItem(Vendas venda) {
+	public void recebeItem(VendasDTO vendaDTO) {
 
 		RestTemplate client = new RestTemplate();
 
 		ResponseEntity<ItemDTO> exchange = client.exchange(
-				"http://localhost:8081/catalogo/" + venda.getIdItem(), 
+				"http://localhost:8081/catalogo/" + vendaDTO.getIdItem(), 
 				HttpMethod.GET, 
 				null, 
 				ItemDTO.class);
 
-		venda.setNomeProduto(exchange.getBody().getNomeProduto());
-		venda.setValorUnitario(exchange.getBody().getValorUnitario());
-		venda.setCategoria(exchange.getBody().getCategoria());
+		vendaDTO.setNomeProduto(exchange.getBody().getNomeProduto());
+		vendaDTO.setValorUnitario(exchange.getBody().getValorUnitario());
+		vendaDTO.setCategoria(exchange.getBody().getCategoria());
 
 	}
 	
-	public void recebeItemPorEstado(Vendas venda) {
+	public void recebeItemPorEstado(VendasDTO vendaDTO) {
 
 		RestTemplate client = new RestTemplate();
 
 		ResponseEntity<ItemDTO> exchange = client.exchange(
-				"http://localhost:8081/catalogo/" + venda.getIdItem(), 
+				"http://localhost:8081/catalogo/" + vendaDTO.getIdItem(), 
 				HttpMethod.GET, 
 				null, 
 				ItemDTO.class);
 
-		venda.setNomeProduto(exchange.getBody().getNomeProduto());
-		venda.setValorUnitario(exchange.getBody().getValorUnitario());
-		venda.setCategoria(exchange.getBody().getCategoria());
+		vendaDTO.setNomeProduto(exchange.getBody().getNomeProduto());
+		vendaDTO.setValorUnitario(exchange.getBody().getValorUnitario());
+		vendaDTO.setCategoria(exchange.getBody().getCategoria());
 
 		System.out.println(exchange.getBody());
 	}	
