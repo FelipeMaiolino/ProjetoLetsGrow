@@ -32,7 +32,7 @@ public class TranportadoraService {
 	public void mandandoDadosTransporte(NovaEntregaDTO novaEntrega) {
 		RestTemplate client = new RestTemplate();
 		
-		ResponseEntity<NovaEntregaDTO> exchange = client.exchange("http://localhost:8082/trasnportadora/pedido/novo", 
+		ResponseEntity<NovaEntregaDTO> exchange = client.postForEntity("http://localhost:8082/trasnportadora/pedido/novo", 
 				HttpMethod.POST, 
 				null, 
 				NovaEntregaDTO.class);
